@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Add Stock</title>
+    <link rel="stylesheet" type="text/css" href="addStock.css">
+</head>
+
+<body>
+    <h1>Add Stock</h1>
+    <form action="/stock" method="POST">
+        <div class="form-group">
+            <label for="ticker">Ticker:</label>
+            <input type="text" id="ticker" name="ticker" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required>
+        </div>
+        <div class="form-group">
+            <label for="volume">Volume:</label>
+            <input type="text" id="volume" name="volume" required>
+        </div>
+        <div class="form-group">
+            <button type="submit">Add Stock</button>
+        </div>
+    </form>
+</body>
+
+</html>

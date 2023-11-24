@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Details</title>
+    <link rel="stylesheet" href="getAirline.css">
+</head>
+<body>
+    <h1>Airline Details</h1>
+    <table>
+        <tr>
+            <th>Airline Name</th>
+            <th>Flight Number</th>
+            <th>Departure City</th>
+            <th>Arrival City</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Action</th>
+        </tr>
+        <!-- Loop through airline data (Replace this with your server-side code to fetch airline data) -->
+        <!-- Example data (you should replace this with data from your server): -->
+        <% airlines.forEach(function(airline) { %>
+            <tr>
+                <td><%= airline.airline %></td>
+                <td><%= airline.flightNumber %></td>
+                <td><%= airline.departureCity %></td>
+                <td><%= airline.arrivalCity %></td>
+                <td><%= airline.departureTime %></td>
+                <td><%= airline.arrivalTime %></td>
+                <td>
+                    <button onclick="updateAirline('<%= airline.id %>')">Update</button>
+                    <button onclick="deleteAirline('<%= airline.id %>')">Delete</button>  
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+    <script>
+        function updateAirline(airlineId) {
+            // Redirect to the updateAirline.ejs view with the airline ID as a query parameter
+            window.location.href = `/updateAirline?airlineId=${airlineId}`;
+        }
+
+        function deleteAirline(airlineId) {
+            // Display a confirmation dialog
+            if (confirm("Are you sure you want to delete this airline?")) {
+                // If the user confirms, redirect to the deleteAirline.ejs view with the airline ID as a query parameter
+                window.location.href = `/deleteAirline?airlineId=${airlineId}`;
+            }
+        }
+    </script>
+</body>
+</html>

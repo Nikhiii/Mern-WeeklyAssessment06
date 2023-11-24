@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Details</title>
+    <link rel="stylesheet" href="getStock.css">
+</head>
+<body>
+    <h1>Stock Details</h1>
+    <table>
+        <tr>
+            <th>Ticker</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Volume</th>
+            <th>Action</th>
+        </tr>
+        <!-- Loop through stock data (Replace this with your server-side code to fetch stock data) -->
+        <!-- Example data (you should replace this with data from your server): -->
+        <% stocks.forEach(function(stock) { %>
+            <tr>
+                <td><%= stock.ticker %></td>
+                <td><%= stock.name %></td>
+                <td><%= stock.price %></td>
+                <td><%= stock.volume %></td>
+                <td>
+                    <button onclick="updateStock('<%= stock._id %>')">Update</button>
+                    <button onclick="deleteStock('<%= stock._id %>')">Delete</button>
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+    <script>
+        function updateStock(stockId) {
+            // Redirect to the updateStock.ejs view with the stock ID as a query parameter
+            window.location.href = `/updateStock?stockId=${stockId}`;
+        }
+
+        function deleteStock(stockId) {
+        // Display a confirmation dialog
+        if (confirm("Are you sure you want to delete this stock?")) {
+            // If the user confirms, redirect to the deleteStock.ejs view with the stock ID as a query parameter
+            window.location.href = `/deleteStock?stockId=${stockId}`;
+        }
+    }
+    </script>
+</body>
+</html>

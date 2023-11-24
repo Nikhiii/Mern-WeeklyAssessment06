@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Emission Details</title>
+    <link rel="stylesheet" href="getEmission.css">
+</head>
+
+<body>
+    <h1>Emission Details</h1>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Date</th>
+            <th>Emissions</th>
+            <th>Location</th>
+            <th>Source</th>
+            <th>Action</th>
+        </tr>
+        <!-- Loop through emission data (Replace this with your server-side code to fetch emission data) -->
+        <!-- Example data (you should replace this with data from your server): -->
+        <% emissions.forEach(function(emission) { %>
+            <tr>
+                <td><%= emission.username %></td>
+                <td><%= emission.date %></td>
+                <td><%= emission.emissions %></td>
+                <td><%= emission.location %></td>
+                <td><%= emission.source %></td>
+                <td>
+                    <button onclick="updateEmission('<%= emission._id %>')">Update</button>
+                    <button onclick="deleteEmission('<%= emission._id %>')">Delete</button>
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+    <script>
+        function updateEmission(emissionId) {
+            // Redirect to the updateEmission.ejs view with the emission ID as a query parameter
+            window.location.href = `/updateEmission?emissionId=${emissionId}`;
+        }
+
+        function deleteEmission(emissionId) {
+            // Display a confirmation dialog
+            if (confirm("Are you sure you want to delete this emission?")) {
+                // If the user confirms, redirect to the deleteEmission.ejs view with the emission ID as a query parameter
+                window.location.href = `/deleteEmission?emissionId=${emissionId}`;
+            }
+        }
+    </script>
+</body>
+
+</html>

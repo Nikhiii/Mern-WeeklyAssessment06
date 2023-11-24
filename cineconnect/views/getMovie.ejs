@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="getMovie.css">
+</head>
+<body>
+    <h1>Movie Details</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Genre</th>
+            <th>Release Year</th>
+            <th>Description</th>
+            <th>Your Name</th>
+            <th>Rating (1-5)</th>
+            <th>Review Text</th>
+            <th>Action</th>
+        </tr>
+        <% for(let i = 0; i < movies.length; i++) { %>
+            <tr>
+                <td><%= movies[i].title %></td>
+                <td><%= movies[i].director %></td>
+                <td><%= movies[i].genre %></td>
+                <td><%= movies[i].releaseYear %></td>
+                <td><%= movies[i].description %></td>
+                <td><%= userName[i] %></td>
+                <td><%= rating[i] %></td>
+                <td><%= text[i] %></td>
+                <td>
+                    <button onclick="updateMovie('<%= movies[i]._id %>')">Update</button>
+                    <button onclick="deleteMovie('<%= movies[i]._id %>')">Delete</button>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+    <script>
+        function updateMovie(movieId) {
+            // Redirect to the updateMovie.ejs view with the movie ID as a query parameter
+            window.location.href = `/updateMovie?movieId=${movieId}`;
+        }
+
+        function deleteMovie(movieId) {
+        // Display a confirmation dialog
+        if (confirm("Are you sure you want to delete this movie?")) {
+            // If the user confirms, redirect to the deleteMovie.ejs view with the movie ID as a query parameter
+            window.location.href = `/deleteMovie?movieId=${movieId}`;
+        }
+    }
+    </script>
+</body>
+</html>

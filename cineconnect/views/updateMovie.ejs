@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Movie</title>
+    <link rel="stylesheet" type="text/css" href="updateMovie.css">
+</head>
+<body>
+    <h1>Update Movie</h1>
+    <form action="/movie/<%= movieId %>" method="POST">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" value="<%= title %>" required><br><br>
+
+        <label for="director">Director:</label><br>
+        <input type="text" id="director" name="director" value="<%= director %>" required><br><br>
+
+        <label for="genre">Genre:</label><br>
+        <input type="text" id="genre" name="genre" value="<%= genre %>" required><br><br>
+
+        <label for="releaseYear">Release Year:</label><br>
+        <input type="text" id="releaseYear" name="releaseYear" value="<%= releaseYear %>" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" required><%= description %></textarea><br><br>
+
+        <label for="userName">Your Name:</label><br>
+        <input type="text" id="userName" name="userName" value="<%= userName %>" required><br><br>
+
+        <label for="rating">Rating (1-5):</label><br>
+        <input type="text" id="rating" name="rating" value="<%= rating %>" required min="1" max="5"><br><br>
+
+        <label for="reviewText">Review Text:</label><br>
+        <textarea id="reviewText" name="reviewText" ><%= text %></textarea><br><br>
+
+        <div class="form-group">
+            <button type="submit">Update Movie</button>
+        </div>
+    </form>
+</body>
+</html>

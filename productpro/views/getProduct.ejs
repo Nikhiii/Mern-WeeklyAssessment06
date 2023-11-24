@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="getProduct.css">
+</head>
+<body>
+    <h1>Product Details</h1>
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+        <!-- Loop through product data (Replace this with your server-side code to fetch product data) -->
+        <!-- Example data (you should replace this with data from your server): -->
+        <% products.forEach(function(product) { %>
+            <tr>
+                <td><%= product.name %></td>
+                <td><%= product.quantity %></td>
+                <td><%= product.price %></td>
+                <td><%= product.image %></td>
+                <td>
+                    <button onclick="updateProduct('<%= product._id %>')">Update</button>
+                    <button onclick="deleteProduct('<%= product._id %>')">Delete</button>  
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+    <script>
+        function updateProduct(productId) {
+            // Redirect to the updateProduct.ejs view with the product ID as a query parameter
+            window.location.href = `/updateProduct?productId=${productId}`;
+        }
+
+        function deleteProduct(productId) {
+            // Display a confirmation dialog
+            if (confirm("Are you sure you want to delete this product?")) {
+                // If the user confirms, redirect to the deleteProduct.ejs view with the product ID as a query parameter
+                window.location.href = `/deleteProduct?productId=${productId}`;
+            }
+        }
+    </script>
+</body>
+</html>
